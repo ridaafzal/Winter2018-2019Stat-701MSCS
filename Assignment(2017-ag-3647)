@@ -1,0 +1,67 @@
+import numpy as np
+import matplotlib.pyplot as plt
+X1 = np.array([100, 200, 300, 400, 500, 600, 700]) #X1 for fertilizer
+print(" X1 = ", X1)
+X1=X1*27.2155       # pound into kg conversion
+X2 = np.array([10, 20, 10, 30, 20, 20, 30])     #X2 for Rain Fall
+X2=X2*25.4        # inches into mm
+print(" X2 = ", X2)
+Y = np.array([40, 50, 50, 70, 65, 65, 80])    #Y for Yield
+Y=Y/2.205      #  bushel  to  kg
+print(" Y = ", Y)
+MeanX1 = sum(X1) / len(X1)
+print(" Mean of X1 = ", MeanX1)
+MeanX2 = sum(X2) / len(X2)
+print(" Mean of X2 = ", MeanX2)
+MeanY = sum(Y) / len(Y)
+print(" Mean of Y = ", MeanY)
+x1= (X1 - MeanX1)
+print("value of x1 =", x1)
+x2 = (X2 - MeanX2)
+print("value of x2 =", x2)
+y = (Y - MeanY)
+print("value of y =", y)
+x1square=x1*x1
+print("square of x1", x1square)
+x2square=x2*x2
+print("square of x2", x2square)
+ysquare=y*y
+print("square of y", ysquare)
+a=sum(x1square)
+print("sum of x1", a)
+b=sum(x2square)
+print("sum of x2", b)
+c=sum(ysquare)
+print("sum of y", c)
+x1x2=x1*x2
+d=sum(x1x2)
+print("sum of x1x2", d)
+x1y=x1*y
+e=sum(x1y)
+print("sum of x1y", e)
+x1x2=x1*x2
+g=sum(x1x2)
+print("sum of x1x2", g)
+x2y=x2*y
+f=sum(x2y)
+print("sum of x2y", f)
+B1=((e*b)-(d*f))/((a*b)-(g*g))
+print("value of B1", B1)
+B2=((f*a)-(e*g))/((a*b)-(g*g))
+print("value of B2", B2)
+B0=MeanY-B1*(MeanX1)-B2*(MeanX2)
+print("value of Bo", B0)
+plt.scatter(X1, Y, color="g", marker="o", s=30)    #for X1,Y
+plt.plot(X1, Y, color="b")
+plt.xlabel('X1')
+plt.ylabel('Y')
+plt.plot()
+plt.show()
+plt.scatter(X2, Y, color="g", marker="o", s=30)   #for X2,Y
+plt.plot(X2, Y, color="b")
+plt.xlabel('X2')
+plt.ylabel('Y')
+plt.plot()
+plt.show()
+TSS=sum((Y - MeanY)*(Y-MeanY))
+print("the value of TSS", TSS)
