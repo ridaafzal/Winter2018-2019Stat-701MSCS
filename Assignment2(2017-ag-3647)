@@ -1,0 +1,76 @@
+X1<-c(100,200,300,400,500,600,700)  #fertilizer(X1=X1/2.205)
+
+X2<-c(10,20,10,30,20,20,30)         #Rainfall(X2=X2*25.4)
+
+Y<-c(40,50,50,70,65,65,80)          #yield(Y*27.2155)
+
+
+    # for standard value Fertilizer(bound to kg convertion)
+    # for standard value rainfall(inchse to mm convertion)
+    # for standard value Yield(bushel to kg convertion)
+    # this question with out convertion
+print(X1)
+print(X2)
+print(Y)
+
+mean(X1)
+mean(X2)
+mean(Y)
+print(X2-mean(X2))
+print(Y-mean(Y))
+print(X1-mean(X1))*(X1-mean(X1))
+print(X2-mean(X2))*(X2-mean(X2))
+print(Y-mean(Y))*(Y-mean(Y))
+print((X1-mean(X1))*(Y-mean(Y)))
+print((X2-mean(X2))*(Y-mean(Y)))
+print((X2-mean(X2))*(X1-mean(X1)))
+
+sum(X1-mean(X1))*(X1-mean(X1))
+sum(X2-mean(X2))*(X2-mean(X2))
+sum((Y-mean(Y))*(Y-mean(Y)))
+x1y=sum((X1-mean(X1))*(Y-mean(Y)))
+print(x1y)
+x2y=sum((X2-mean(X2))*(Y-mean(Y)))
+print(x2y)
+x2=sum((X2-mean(X2))*(X2-mean(X2)))   #x2 square
+print(x2)
+x1=sum((X1-mean(X1))*(X1-mean(X1))) #x1 square
+print(x1)
+x1x2=sum((X1-mean(X1))*(X2-mean(X2)))
+print(x1x2)
+N=(x1y*(x2))-(x1x2)*(x2y)
+print(N)
+D=(x1*x2)- (x1x2*x1x2)
+print(D)
+B1=N/D
+print(B1)
+N1=(x2y*x1)-(x1y*x1x2)
+print(N1)
+D=(x1*x2)- (x1x2*x1x2)
+print(D)
+B2=N1/D
+print(B2)
+B0=mean(Y)-B1*mean(X1)-B2*mean(X2)
+print(B0)
+
+regression<-lm(Y~X1+X2)
+print(regression)
+standardDev=print(sd(X1))
+standardDev=print(sd(X2))
+standardDev=print(sd(Y))
+varX1=print(var(X1))
+varX2=print(var(X2))
+varY=print(var(Y))
+summary(regression)
+confint(regression)
+TSS <- sum((Y - mean(Y))^2)
+print(TSS)
+boxplot(Y~X1+X2)
+anova = aov(Y~X1+X2)
+summary(anova)
+plot(Y~X1+X2,
+     X1lab= "Fertilizer",
+     X2lab="Rainfall",
+     Ylab="Yield",
+     main="Relationship b/w X1+X2 and Y ")
+abline(lm(Y~X1+X2))
